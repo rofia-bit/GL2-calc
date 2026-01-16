@@ -7,14 +7,12 @@ function validateInput(input) {
         return true;
     }
 
-
     const value = parseFloat(raw);
 
     if (Number.isNaN(value) || value < 0) {
         input.classList.add('invalid');
         return false;
     }
-
 
     if (value > 20) {
         input.classList.add('invalid');
@@ -26,13 +24,9 @@ function validateInput(input) {
     }
 }
 
-
-
 function clamp20(n) {
     return Math.min(Math.max(n, 0), 20);
 }
-
-
 
 function readMark(id) {
     const el = document.getElementById(id);
@@ -51,7 +45,6 @@ function formatNumber(num) {
     return num !== null ? num.toFixed(2) : '-';
 }
 
-
 function calcModule(values, weights) {
     for (const k in weights) {
         if (values[k] === null) return null;
@@ -65,14 +58,8 @@ function calcModule(values, weights) {
     return clamp20(sum);
 }
 
-
-
-
 const STORAGE_KEY = 'gl2calc-inputs';
 const THEME_KEY = 'gl2calc-theme';
-
-
-
 
 function saveInputsToStorage() {
     const payload = {};
@@ -84,8 +71,6 @@ function saveInputsToStorage() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
     } catch (e) {}
 }
-
-
 
 function restoreInputsFromStorage() {
     try {
@@ -100,18 +85,11 @@ function restoreInputsFromStorage() {
     } catch (e) {}
 }
 
-
-
-
-
 function clearStoredInputs() {
     try {
         localStorage.removeItem(STORAGE_KEY);
     } catch (e) {}
 }
-
-
-
 
 function applyTheme(theme) {
     const body = document.body;
@@ -126,8 +104,6 @@ function applyTheme(theme) {
     }
 }
 
-
-
 function saveTheme(theme) {
     try {
         localStorage.setItem(THEME_KEY, theme);
@@ -141,8 +117,6 @@ function restoreTheme() {
     } catch (e) {}
 }
 
-
-
 function calculateAllGrades() {
     const allInputs = document.querySelectorAll('input[type="number"]');
     allInputs.forEach(validateInput);
@@ -154,7 +128,8 @@ function calculateAllGrades() {
             tp: readMark('tql-tp'),
             coef: 2,
             result: null,
-            weights: { controle: 0.6, td: 0.2, tp: 0.2 }
+            // CHANGED: TD is the full 40%
+            weights: { controle: 0.6, td: 0.4 }
         },
         gpl: {
             controle: readMark('gpl-controle'),
@@ -162,7 +137,8 @@ function calculateAllGrades() {
             tp: readMark('gpl-tp'),
             coef: 2,
             result: null,
-            weights: { controle: 0.6, td: 0.2, tp: 0.2 }
+            // CHANGED
+            weights: { controle: 0.6, td: 0.4 }
         },
         dac: {
             controle: readMark('dac-controle'),
@@ -170,14 +146,15 @@ function calculateAllGrades() {
             tp: readMark('dac-tp'),
             coef: 2,
             result: null,
-            weights: { controle: 0.6, td: 0.2, tp: 0.2 }
+            // CHANGED
+            weights: { controle: 0.6, td: 0.4 }
         },
         daw: {
-        controle: readMark('daw-controle'),
-        tp: readMark('daw-tp'),
-        coef: 1,
-        result: null,
-        weights: { controle: 0.6, tp: 0.4 }
+            controle: readMark('daw-controle'),
+            tp: readMark('daw-tp'),
+            coef: 1,
+            result: null,
+            weights: { controle: 0.6, tp: 0.4 }
         },
         gl2: {
             controle: readMark('gl2-controle'),
@@ -192,17 +169,22 @@ function calculateAllGrades() {
             tp: readMark('tabd-tp'),
             coef: 2,
             result: null,
-            weights: { controle: 0.6, td: 0.2, tp: 0.2 }
+            // CHANGED
+            weights: { controle: 0.6, td: 0.4 }
         }
     };
 
     // calculations
-    modules.tql.result = calcModule({ controle: modules.tql.controle, td: modules.tql.td, tp: modules.tql.tp }, modules.tql.weights);
-    modules.gpl.result = calcModule({ controle: modules.gpl.controle, td: modules.gpl.td, tp: modules.gpl.tp }, modules.gpl.weights);
-    modules.dac.result = calcModule({ controle: modules.dac.controle, td: modules.dac.td, tp: modules.dac.tp }, modules.dac.weights);
+    // CHANGED: do NOT include tp in calc for these 4 modules
+    modules.tql.result = calcModule({ controle: modules.tql.controle, td: modules.tql.td }, modules.tql.weights);
+    modules.gpl.result = calcModule({ controle: modules.gpl.controle, td: modules.gpl.td }, modules.gpl.weights);
+    modules.dac.result = calcModule({ controle: modules.dac.controle, td: modules.dac.td }, modules.dac.weights);
+
     modules.daw.result = calcModule({ controle: modules.daw.controle, tp: modules.daw.tp }, modules.daw.weights);
     modules.gl2.result = calcModule({ controle: modules.gl2.controle, td: modules.gl2.td }, modules.gl2.weights);
-    modules.tabd.result = calcModule({ controle: modules.tabd.controle, td: modules.tabd.td, tp: modules.tabd.tp }, modules.tabd.weights);
+
+    // CHANGED
+    modules.tabd.result = calcModule({ controle: modules.tabd.controle, td: modules.tabd.td }, modules.tabd.weights);
 
     // ui
     document.getElementById('tql-result').textContent = formatNumber(modules.tql.result);
@@ -282,8 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateAllGrades();
 });
 
-
-
 // sutosave
 (function() {
     let saveTimeout = null;
@@ -310,9 +290,6 @@ document.addEventListener('DOMContentLoaded', function() {
         calculateAllGrades();
     });
 })();
-
-
-
 
 //back up 
 (function() {
