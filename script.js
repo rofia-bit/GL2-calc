@@ -128,7 +128,7 @@ function calculateAllGrades() {
             tp: readMark('tql-tp'),
             coef: 2,
             result: null,
-            // CHANGED: TD is the full 40%
+           
             weights: { controle: 0.6, td: 0.4 }
         },
         gpl: {
@@ -137,7 +137,7 @@ function calculateAllGrades() {
             tp: readMark('gpl-tp'),
             coef: 2,
             result: null,
-            // CHANGED
+         
             weights: { controle: 0.6, td: 0.4 }
         },
         dac: {
@@ -146,7 +146,7 @@ function calculateAllGrades() {
             tp: readMark('dac-tp'),
             coef: 2,
             result: null,
-            // CHANGED
+           
             weights: { controle: 0.6, td: 0.4 }
         },
         daw: {
@@ -169,13 +169,13 @@ function calculateAllGrades() {
             tp: readMark('tabd-tp'),
             coef: 2,
             result: null,
-            // CHANGED
+            
             weights: { controle: 0.6, td: 0.4 }
         }
     };
 
     // calculations
-    // CHANGED: do NOT include tp in calc for these 4 modules
+
     modules.tql.result = calcModule({ controle: modules.tql.controle, td: modules.tql.td }, modules.tql.weights);
     modules.gpl.result = calcModule({ controle: modules.gpl.controle, td: modules.gpl.td }, modules.gpl.weights);
     modules.dac.result = calcModule({ controle: modules.dac.controle, td: modules.dac.td }, modules.dac.weights);
@@ -183,7 +183,7 @@ function calculateAllGrades() {
     modules.daw.result = calcModule({ controle: modules.daw.controle, tp: modules.daw.tp }, modules.daw.weights);
     modules.gl2.result = calcModule({ controle: modules.gl2.controle, td: modules.gl2.td }, modules.gl2.weights);
 
-    // CHANGED
+    
     modules.tabd.result = calcModule({ controle: modules.tabd.controle, td: modules.tabd.td }, modules.tabd.weights);
 
     // ui
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 
-//back up 
+//back up
 (function() {
     const backToTop = document.getElementById('back-to-top');
 
