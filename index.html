@@ -1,194 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GL2 - calc </title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GL2 - calc</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-  <div class="bg-blur"></div>
+  <body>
+    <div class="bg-blur"></div>
 
-  <main class="container">
-    <header class="hero">
-      <div class="hero-left">
-        <h1>GL2 - calc</h1>
-      </div>
-
-      <div class="hero-actions">
-        <button id="theme-toggle" class="chip" aria-label="Toggle theme">dark</button>
-        <button id="reset-btn" class="chip danger" aria-label="Reset all">reset</button>
-      </div>
-    </header>
-
-    <section class="card">
-      <div class="card-head">
-        <h2>Modules</h2>
-      </div>
-
-      <div class="table">
-        <div class="row head">
-          <div>Module</div>
-          <div class="center">Coef</div>
-          <div>Inputs</div>
-          <div class="right">Result</div>
+    <main class="container">
+      <header class="hero">
+        <div class="hero-left">
+          <h1>GL2 - calc</h1>
         </div>
 
-        <!-- TQL -->
-        <div class="row">
-          <div class="mod">
-            <div class="mod-title">TQL</div>
-            <div class="mod-sub">60% Contrôle + 40% TD</div>
-          </div>
-          <div class="center coef">2</div>
-          <div class="inputs">
-            <div class="input">
-              <label>Contrôle</label>
-              <input type="number" id="tql-controle" min="0" max="20" step="0.1" placeholder=""/>
-            </div>
-            <div class="input">
-              <label>TD (interro)</label>
-              <input type="number" id="tql-td" min="0" max="20" step="0.1" placeholder=""/>
-            </div>
+        <div class="hero-actions">
+          <button id="theme-toggle" class="chip" aria-label="Toggle theme">dark</button>
+          <button id="reset-btn" class="chip danger" aria-label="Reset all">reset</button>
+        </div>
+      </header>
 
-
-            <input type="hidden" id="tql-tp" />
-          </div>
-          <div class="right result" id="tql-result">-</div>
+      <section class="card">
+        <div class="card-head">
+          <h2>Modules</h2>
         </div>
 
-        <!-- GPL -->
-        <div class="row">
-          <div class="mod">
-            <div class="mod-title">GPL</div>
-            <div class="mod-sub">60% Contrôle + 40% TD</div>
+        <div class="table">
+          <div class="row head">
+            <div>Module</div>
+            <div class="center">Coef</div>
+            <div>Inputs</div>
+            <div class="right">Result</div>
           </div>
-          <div class="center coef">2</div>
-          <div class="inputs">
-            <div class="input">
-              <label>Contrôle</label>
-              <input type="number" id="gpl-controle" min="0" max="20" step="0.1" placeholder=""/>
+
+          <div class="row">
+            <div class="mod">
+              <div class="mod-title">TQL</div>
+              <div class="mod-sub">60% Contrôle + 40% TD</div>
             </div>
-            <div class="input">
-              <label>TD (interro)</label>
-              <input type="number" id="gpl-td" min="0" max="20" step="0.1" placeholder=""/>
+            <div class="center coef">2</div>
+            <div class="inputs">
+              <div class="input">
+                <label>Contrôle</label>
+                <input type="number" id="tql-controle" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+              <div class="input">
+                <label>TD (interro)</label>
+                <input type="number" id="tql-td" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+              <input type="hidden" id="tql-tp" />
+            </div>
+            <div class="right result" id="tql-result">-</div>
+          </div>
+
+          <div class="row">
+            <div class="mod">
+              <div class="mod-title">GPL</div>
+              <div class="mod-sub">60% Contrôle + 40% TD</div>
+            </div>
+            <div class="center coef">2</div>
+            <div class="inputs">
+              <div class="input">
+                <label>Contrôle</label>
+                <input type="number" id="gpl-controle" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+              <div class="input">
+                <label>TD (interro)</label>
+                <input type="number" id="gpl-td" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+              <input type="hidden" id="gpl-tp" />
+            </div>
+            <div class="right result" id="gpl-result">-</div>
+          </div>
+
+          <div class="row">
+            <div class="mod">
+              <div class="mod-title">DAC</div>
+              <div class="mod-sub">60% Contrôle + 40% TD</div>
+            </div>
+            <div class="center coef">2</div>
+
+            <div class="inputs">
+              <div class="input">
+                <label>Contrôle</label>
+                <input type="number" id="dac-controle" min="0" max="20" step="0.1" />
+              </div>
+
+              <div class="input">
+                <label>TD</label>
+                <input type="number" id="dac-td" min="0" max="20" step="0.1" />
+              </div>
+
+              <input type="hidden" id="dac-tp" />
             </div>
 
-
-            <input type="hidden" id="gpl-tp" />
+            <div class="right result" id="dac-result">-</div>
           </div>
-          <div class="right result" id="gpl-result">-</div>
+
+          <div class="row">
+            <div class="mod">
+              <div class="mod-title">DAW</div>
+              <div class="mod-sub">60% Contrôle + 40% TP</div>
+            </div>
+            <div class="center coef">1</div>
+            <div class="inputs">
+              <div class="input">
+                <label>Contrôle</label>
+                <input type="number" id="daw-controle" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+              <div class="input">
+                <label>TP</label>
+                <input type="number" id="daw-tp" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+            </div>
+            <div class="right result" id="daw-result">-</div>
+          </div>
+
+          <div class="row">
+            <div class="mod">
+              <div class="mod-title">GL2</div>
+              <div class="mod-sub">60% Contrôle + 40% TD (TD includes mini-projet + évaluations)</div>
+            </div>
+            <div class="center coef">4</div>
+
+            <div class="inputs">
+              <div class="input">
+                <label>Contrôle</label>
+                <input type="number" id="gl2-controle" min="0" max="20" step="0.1" />
+              </div>
+
+              <div class="input">
+                <label>TD</label>
+                <input type="number" id="gl2-td" min="0" max="20" step="0.1" />
+              </div>
+            </div>
+
+            <div class="right result" id="gl2-result">-</div>
+          </div>
+
+          <div class="row">
+            <div class="mod">
+              <div class="mod-title">TABD</div>
+              <div class="mod-sub">60% Contrôle + 40% TD</div>
+            </div>
+            <div class="center coef">2</div>
+            <div class="inputs">
+              <div class="input">
+                <label>Contrôle</label>
+                <input type="number" id="tabd-controle" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+              <div class="input">
+                <label>TD</label>
+                <input type="number" id="tabd-td" min="0" max="20" step="0.1" placeholder="" />
+              </div>
+
+              <input type="hidden" id="tabd-tp" />
+            </div>
+            <div class="right result" id="tabd-result">-</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary">
+        <div class="summary-card">
+          <div class="summary-title">Overall Average</div>
+          <div class="summary-value" id="overall-average">-</div>
         </div>
 
-        <!-- DAC -->
-        <div class="row">
-          <div class="mod">
-            <div class="mod-title">DAC</div>
-            <div class="mod-sub">60% Contrôle + 40% TD</div>
-          </div>
-          <div class="center coef">2</div>
-
-          <div class="inputs">
-            <div class="input">
-              <label>Contrôle</label>
-              <input type="number" id="dac-controle" min="0" max="20" step="0.1" />
-            </div>
-
-            <div class="input">
-              <label>TD</label>
-              <input type="number" id="dac-td" min="0" max="20" step="0.1" />
-            </div>
-
-
-            <input type="hidden" id="dac-tp" />
-          </div>
-
-          <div class="right result" id="dac-result">-</div>
+        <div class="summary-card">
+          <div class="summary-title">Total Coef</div>
+          <div class="summary-value" id="total-coef">-</div>
         </div>
+      </section>
 
-        <!-- DAW -->
-        <div class="row">
-          <div class="mod">
-            <div class="mod-title">DAW</div>
-            <div class="mod-sub">60% Contrôle + 40% TP</div>
-          </div>
-          <div class="center coef">1</div>
-          <div class="inputs">
-            <div class="input">
-              <label>Contrôle</label>
-              <input type="number" id="daw-controle" min="0" max="20" step="0.1" placeholder=""/>
-            </div>
-            <div class="input">
-              <label>TP</label>
-              <input type="number" id="daw-tp" min="0" max="20" step="0.1" placeholder=""/>
-            </div>
-          </div>
-          <div class="right result" id="daw-result">-</div>
-        </div>
+      <footer class="footer">
+        <span>GL2-Calc • ✮ ⋆ Rofia ⋆｡°✩</span>
+      </footer>
 
-        <!-- GL2 -->
-        <div class="row">
-          <div class="mod">
-            <div class="mod-title">GL2</div>
-            <div class="mod-sub">60% Contrôle + 40% TD (TD includes mini-projet + évaluations)</div>
-          </div>
-          <div class="center coef">4</div>
+      <button id="back-to-top" class="fab" aria-label="Back to top">⬆</button>
+    </main>
 
-          <div class="inputs">
-            <div class="input">
-              <label>Contrôle</label>
-              <input type="number" id="gl2-controle" min="0" max="20" step="0.1" />
-            </div>
-
-            <div class="input">
-              <label>TD</label>
-              <input type="number" id="gl2-td" min="0" max="20" step="0.1" />
-            </div>
-          </div>
-
-          <div class="right result" id="gl2-result">-</div>
-        </div>
-
-        <!-- TABD -->
-        <div class="row">
-          <div class="mod">
-            <div class="mod-title">TABD</div>
-            <div class="mod-sub">60% Contrôle + 40% TD</div>
-          </div>
-          <div class="center coef">2</div>
-          <div class="inputs">
-            <div class="input">
-              <label>Contrôle</label>
-              <input type="number" id="tabd-controle" min="0" max="20" step="0.1" placeholder=""/>
-            </div>
-            <div class="input">
-              <label>TD</label>
-              <input type="number" id="tabd-td" min="0" max="20" step="0.1" placeholder=""/>
-            </div>
-
-
-            <input type="hidden" id="tabd-tp" />
-          </div>
-          <div class="right result" id="tabd-result">-</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="summary">
-      <div class="summary-card">
-        <div class="summary-title">Overall Average</div>
-        <div class="summary-value" id="overall-average">-</div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>GL2-Calc • ✮ ⋆ Rofia ⋆｡°✩</span>
-    </footer>
-
-    <button id="back-to-top" class="fab" aria-label="Back to top">⬆</button>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js" defer></script>
+  </body>
 </html>
